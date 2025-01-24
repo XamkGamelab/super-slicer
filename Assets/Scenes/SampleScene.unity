@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 89750772}
   m_Layer: 3
   m_Name: LeftZone
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -717,7 +717,7 @@ GameObject:
   - component: {fileID: 661877387}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -741,6 +741,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   speed: 5
+  dashSpeed: 100
+  dashTime: 0.1
+  dashCD: 5
+  dashing: 0
 --- !u!212 &661877384
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -836,7 +840,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &661877387
 CircleCollider2D:
@@ -1047,7 +1051,7 @@ GameObject:
   - component: {fileID: 1663926146}
   m_Layer: 3
   m_Name: TopZone
-  m_TagString: Untagged
+  m_TagString: Edge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1181,7 +1185,7 @@ GameObject:
   - component: {fileID: 1917228385}
   m_Layer: 3
   m_Name: RightZone
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1315,7 +1319,7 @@ GameObject:
   - component: {fileID: 2060917226}
   m_Layer: 3
   m_Name: BotZone
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1444,6 +1448,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4281412626394224851, guid: 6ed930a7e0c44ca40bf98f378fd624e2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1133745939985857089, guid: 6ed930a7e0c44ca40bf98f378fd624e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.55
@@ -1487,6 +1495,10 @@ PrefabInstance:
     - target: {fileID: 4531581680347469803, guid: 6ed930a7e0c44ca40bf98f378fd624e2, type: 3}
       propertyPath: m_Name
       value: MeleeEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453277775057199415, guid: 6ed930a7e0c44ca40bf98f378fd624e2, type: 3}
+      propertyPath: m_Simulated
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6620183459689513728, guid: 6ed930a7e0c44ca40bf98f378fd624e2, type: 3}
       propertyPath: player
