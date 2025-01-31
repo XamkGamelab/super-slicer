@@ -25,7 +25,7 @@ public class InputManager : MonoBehaviour
             playerController.dashEvent.Invoke();
         }
 
-        if (movementAction.IsPressed())
+        if (movementAction.IsPressed() && !playerController.dashing)
         {
             Vector2 movementValue = movementAction.ReadValue<Vector2>();
             playerController.movementEvent.Invoke(movementValue);

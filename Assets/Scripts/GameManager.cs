@@ -39,4 +39,9 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = paused ? 0.0f : 1.0f;
     }
+
+    public void GameOver()
+    {
+        Pause(true);
+    }
 }
