@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IDamageable
 {
     private GameManager gameManager;
     [SerializeField] float speed;
@@ -12,6 +12,10 @@ public class EnemyController : MonoBehaviour
     PlayerController playerController;
     //LayerMask mask;
 
+    int health = 3;
+
+    public int Health { get; set; }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,6 +24,7 @@ public class EnemyController : MonoBehaviour
         playerPos = player.transform;
         //mask = LayerMask.GetMask("Player");
         playerController = player.GetComponent<PlayerController>();
+        Health = health;
     }
 
     // Update is called once per frame
@@ -53,6 +58,19 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerController.Damage();
+        }
+    }
+
+    public void Damage()
+    {
+        Debug.Log("Got Hit!");
+        if (Health >= 0)
+        {
+            Health--;
+            if (Health <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
