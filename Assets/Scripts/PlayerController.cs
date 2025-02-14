@@ -24,13 +24,17 @@ public class PlayerController : MonoBehaviour, IDamageable
     private Rigidbody2D rb;
     LayerMask mask;
 
+    [SerializeField] GameObject meleeAttack;
+
     // TODO: Track closest enemy and attack that dir
     // also implement hitbox damage
 
+    bool attacking = true;
     int health = 3;
 
     public int Health { get; set; }
     bool isDead = false;
+    public bool IsAttacking { get; set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -45,21 +49,24 @@ public class PlayerController : MonoBehaviour, IDamageable
         rb = GetComponent<Rigidbody2D>();
         mask = LayerMask.GetMask("Level", "Enemy");
         Health = health;
+        IsAttacking = attacking;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (currentDashCD > 0.0f) { currentDashCD -= Time.deltaTime; }
+
+        meleeAttack.SetActive(IsAttacking);
     }
 
     void Move(Vector2 moveVector)
     {
         if (isDead) { return; }
-        Vector2 dir = new Vector2(transform.position.x, transform.position.y) + moveVector.normalized;
+        Vector2 dir = new Vector2(transform.parent.position.x, transform.parent.position.y) + moveVector.normalized;
         //Debug.Log($"Moving: {moveVector}");
         transform.rotation = Quaternion.LookRotation(Vector3.forward, moveVector);
-        transform.position = Vector2.Lerp(transform.position, dir, speed * Time.deltaTime);
+        transform.parent.position = Vector2.Lerp(transform.parent.position, dir, speed * Time.deltaTime);
     }
 
     void Dash()
@@ -104,7 +111,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         while (currentDashDistance < dashDistance)
         {
             currentDashDistance += dashSpeed * Time.deltaTime;
-            transform.position += transform.up * dashSpeed * Time.deltaTime;
+            transform.parent.position += transform.up * dashSpeed * Time.deltaTime;
 
             // add check if colliding with edges or enemies
 
