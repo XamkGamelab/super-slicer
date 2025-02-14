@@ -24,13 +24,17 @@ public class PlayerController : MonoBehaviour, IDamageable
     private Rigidbody2D rb;
     LayerMask mask;
 
+    [SerializeField] GameObject meleeAttack;
+
     // TODO: Track closest enemy and attack that dir
     // also implement hitbox damage
 
+    bool attacking = true;
     int health = 3;
 
     public int Health { get; set; }
     bool isDead = false;
+    public bool IsAttacking { get; set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -45,12 +49,15 @@ public class PlayerController : MonoBehaviour, IDamageable
         rb = GetComponent<Rigidbody2D>();
         mask = LayerMask.GetMask("Level", "Enemy");
         Health = health;
+        IsAttacking = attacking;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (currentDashCD > 0.0f) { currentDashCD -= Time.deltaTime; }
+
+        meleeAttack.SetActive(IsAttacking);
     }
 
     void Move(Vector2 moveVector)
