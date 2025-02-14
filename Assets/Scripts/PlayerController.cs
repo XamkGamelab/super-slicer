@@ -3,6 +3,7 @@ using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
+using static Unity.Cinemachine.IInputAxisOwner.AxisDescriptor;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
@@ -18,18 +19,20 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] float dashDistance;
     [SerializeField] float dashTime;
     [SerializeField] float dashCD;
+    [SerializeField] float detectionRange;
+    [SerializeField] float attackCD;
+    private float currentAttackCD = 0.0f;
     private float currentDashCD = 0.0f;
     private float currentDashDistance = 0.0f;
     public bool dashing;
-    private Rigidbody2D rb;
+    [SerializeField] Rigidbody2D rb;
     LayerMask mask;
 
-    [SerializeField] GameObject meleeAttack;
+    [SerializeField] MeleeAttack meleeAttack;
 
-    // TODO: Track closest enemy and attack that dir
-    // also implement hitbox damage
+    private RaycastHit2D[] enemies;
 
-    bool attacking = true;
+    bool attacking = false;
     int health = 3;
 
     public int Health { get; set; }
@@ -46,7 +49,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
         movementEvent.AddListener(Move);
         dashEvent.AddListener(Dash);
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
         mask = LayerMask.GetMask("Level", "Enemy");
         Health = health;
         IsAttacking = attacking;
@@ -57,7 +60,16 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         if (currentDashCD > 0.0f) { currentDashCD -= Time.deltaTime; }
 
-        meleeAttack.SetActive(IsAttacking);
+        NearestEnemy();
+
+        if (currentAttackCD > 0.0f)
+        {
+            currentAttackCD -= Time.deltaTime;
+        } else if (IsAttacking)
+        {
+            Attack();
+            currentAttackCD = attackCD;
+        }
     }
 
     void Move(Vector2 moveVector)
@@ -151,5 +163,37 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         Debug.Log("Game Over");
         gameManager.GameOver();
+    }
+
+    public Vector2 NearestEnemy()
+    {
+        Vector2 dir = Vector2.zero;
+        float dist = detectionRange;
+        enemies = Physics2D.CircleCastAll(transform.position, detectionRange, transform.up, 0f);
+
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            if (enemies[i].collider.gameObject.layer == 6)
+            {
+                RaycastHit2D enemyCollision = enemies[i];
+                if (enemyCollision.distance < dist)
+                {
+                    dir = enemyCollision.collider.transform.position;
+                }
+            }
+
+        }
+
+        if (dir == Vector2.zero)
+        {
+            IsAttacking = false;
+        } else IsAttacking = true;
+
+        return dir;
+    }
+
+    private void Attack()
+    {
+        meleeAttack.Attack(NearestEnemy());
     }
 }
