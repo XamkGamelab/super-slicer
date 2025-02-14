@@ -897,13 +897,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661877382}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.16, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1861334464}
-  m_Father: {fileID: 0}
+  m_Children: []
+  m_Father: {fileID: 1847460771}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &661877386
 Rigidbody2D:
@@ -1293,6 +1292,39 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1847460770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1847460771}
+  m_Layer: 0
+  m_Name: PlayerParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1847460771
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847460770}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 661877385}
+  - {fileID: 1861334464}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1861334463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,15 +1351,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861334463}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.49462458, w: 0.86910677}
+  m_LocalRotation: {x: -0, y: -0, z: 0.0038397175, w: 0.99999267}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1599907, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 825415075}
   - {fileID: 599659290}
-  m_Father: {fileID: 661877385}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -59.29}
+  m_Father: {fileID: 1847460771}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.44}
 --- !u!95 &1861334465
 Animator:
   serializedVersion: 7
@@ -1712,7 +1744,7 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 655745364}
   - {fileID: 414121216}
-  - {fileID: 661877385}
+  - {fileID: 1847460771}
   - {fileID: 6293754568557326173}
   - {fileID: 1233680851}
   - {fileID: 774558239}

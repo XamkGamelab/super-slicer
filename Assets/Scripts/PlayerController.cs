@@ -63,10 +63,10 @@ public class PlayerController : MonoBehaviour, IDamageable
     void Move(Vector2 moveVector)
     {
         if (isDead) { return; }
-        Vector2 dir = new Vector2(transform.position.x, transform.position.y) + moveVector.normalized;
+        Vector2 dir = new Vector2(transform.parent.position.x, transform.parent.position.y) + moveVector.normalized;
         //Debug.Log($"Moving: {moveVector}");
         transform.rotation = Quaternion.LookRotation(Vector3.forward, moveVector);
-        transform.position = Vector2.Lerp(transform.position, dir, speed * Time.deltaTime);
+        transform.parent.position = Vector2.Lerp(transform.parent.position, dir, speed * Time.deltaTime);
     }
 
     void Dash()
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         while (currentDashDistance < dashDistance)
         {
             currentDashDistance += dashSpeed * Time.deltaTime;
-            transform.position += transform.up * dashSpeed * Time.deltaTime;
+            transform.parent.position += transform.up * dashSpeed * Time.deltaTime;
 
             // add check if colliding with edges or enemies
 

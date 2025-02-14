@@ -25,7 +25,7 @@ public class MeleeAttack : MonoBehaviour
 
     private void Attack(Vector2 dir)
     {
-        transform.rotation = Quaternion.LookRotation(dir);//transform.LookAt(dir);
+        //transform.rotation = Quaternion.LookRotation(dir);//transform.LookAt(dir);
         Debug.DrawRay(transform.position + transform.up * 2, transform.up * 0.5f, Color.white, 0.1f);
         hits = Physics2D.CircleCastAll(transform.position + transform.up * 2, 0.5f, transform.up, 0f);
 
