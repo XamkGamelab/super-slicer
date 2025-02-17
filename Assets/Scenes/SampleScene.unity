@@ -863,8 +863,8 @@ MonoBehaviour:
   dashDistance: 10
   dashTime: 0.1
   dashCD: 5
-  detectionRange: 3
-  attackCD: 0.2
+  detectionRange: 2.5
+  attackCD: 1
   dashing: 0
   rb: {fileID: 1847460772}
   meleeAttack: {fileID: 1861334466}
@@ -1432,7 +1432,8 @@ MonoBehaviour:
   animator: {fileID: 1861334465}
   playerController: {fileID: 661877383}
   attackDir: {fileID: 18909514}
-  attackRange: 0.5
+  attackRange: 1
+  swordRenderer: {fileID: 599659291}
 --- !u!1 &1917228382
 GameObject:
   m_ObjectHideFlags: 0
