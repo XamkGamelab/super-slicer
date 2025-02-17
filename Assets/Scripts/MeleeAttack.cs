@@ -50,8 +50,11 @@ public class MeleeAttack : MonoBehaviour
             {
                 if (hits[i].collider.gameObject.layer == 6)
                 {
+                    // TODO: separate colliders
+                    Debug.Log("hit: " +hits[i].collider.name);
                     EnemyController enemy = hits[i].collider.gameObject.GetComponent<EnemyController>();
                     enemy.Damage();
+                    playerController.combo.IncreaseCombo();
                 }
             }
         }

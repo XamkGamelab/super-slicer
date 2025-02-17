@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
+using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using static Unity.Cinemachine.IInputAxisOwner.AxisDescriptor;
 
 public class PlayerController : MonoBehaviour, IDamageable
@@ -29,11 +31,14 @@ public class PlayerController : MonoBehaviour, IDamageable
     LayerMask mask;
 
     [SerializeField] MeleeAttack meleeAttack;
+    [SerializeField] Slider dashSlider;
+    [SerializeField] Slider HealthSlider;
+    public Combo combo;
 
     private RaycastHit2D[] enemies;
 
     bool attacking = false;
-    int health = 3;
+    [SerializeField] int health = 3;
 
     public int Health { get; set; }
     bool isDead = false;
@@ -53,19 +58,24 @@ public class PlayerController : MonoBehaviour, IDamageable
         mask = LayerMask.GetMask("Level", "Enemy");
         Health = health;
         IsAttacking = attacking;
+        currentDashCD = dashCD;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentDashCD > 0.0f) { currentDashCD -= Time.deltaTime; }
+        if (currentDashCD > 0.0f) 
+        {
+            currentDashCD -= Time.deltaTime;
+            dashSlider.value = dashCD - currentDashCD;
+        }
 
         NearestEnemy();
 
         if (currentAttackCD > 0.0f)
         {
             currentAttackCD -= Time.deltaTime;
-        } else if (IsAttacking)
+        } else if (IsAttacking && !dashing && !isDead)
         {
             Attack();
             currentAttackCD = attackCD;
@@ -103,6 +113,7 @@ public class PlayerController : MonoBehaviour, IDamageable
                 if (hit.collider.gameObject.layer == 6)
                 {
                     Destroy(hit.collider.gameObject);
+                    combo.IncreaseCombo();
                 }
 
                 else if (hit.collider.gameObject.layer == 3)
@@ -151,6 +162,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (Health >= 0) 
         {
             Health--; 
+            HealthSlider.value = Health;
             if (Health <= 0)
             {
                 isDead = true;
@@ -162,6 +174,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void GameOver()
     {
         Debug.Log("Game Over");
+        isDead = true;
         gameManager.GameOver();
     }
 

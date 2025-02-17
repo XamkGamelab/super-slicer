@@ -12,11 +12,10 @@ public class EnemyController : MonoBehaviour, IDamageable
     PlayerController playerController;
     //LayerMask mask;
 
-    int health = 3;
+    [SerializeField] int health = 3;
 
     public int Health { get; set; }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gameManager = GameManager.Instance;
@@ -43,27 +42,31 @@ public class EnemyController : MonoBehaviour, IDamageable
         }
     }
 
-    void Attack()
+    private bool Attack()
     {
         if (!attackOnCD)
         {
             currentAttackCD = attackCD;
             attackOnCD = true;
+            return true;
         }
+        return false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Attack();
-        if (collision.gameObject.CompareTag("Player"))
+        Debug.Log("enemyattack " + attackOnCD);
+        //Attack();
+        
+        if (collision.gameObject.CompareTag("Player") && Attack())
         {
+            
             playerController.Damage();
         }
     }
 
     public void Damage()
     {
-        Debug.Log("Got Hit!");
         if (Health >= 0)
         {
             Health--;
