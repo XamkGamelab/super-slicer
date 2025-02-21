@@ -57,10 +57,21 @@ public class EnemyController : MonoBehaviour, IDamageable
     {
         Debug.Log("enemyattack " + attackOnCD);
         //Attack();
-        
+
         if (collision.gameObject.CompareTag("Player") && Attack())
         {
-            
+            playerController.Damage();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("enemyattack " + attackOnCD);
+        //Attack();
+
+        if (collision.gameObject.CompareTag("Player") && Attack())
+        {
+
             playerController.Damage();
         }
     }

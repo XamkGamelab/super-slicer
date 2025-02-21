@@ -39,6 +39,7 @@ public class Combo : MonoBehaviour
 
     public void IncreaseCombo()
     {
+        Debug.Log("Combo wombo");
         comboMult += 1;
         UpdateComboMeter();
     }

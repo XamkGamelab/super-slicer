@@ -18,15 +18,14 @@ public class MeleeAttack : MonoBehaviour
     private RaycastHit2D[] hits;
 
 
-    public void Attack(Vector2 dir)
+    public void StartAttack(Vector2 dir)
     {
         Debug.Log("Attack! " + canAttack);
         if (canAttack)
         {
-            
-            PlayAnimation();
             if (dir != Vector2.zero)
             {
+                PlayAnimation();
                 Vector3 target = dir;
 
                 float angle = Mathf.Atan2(target.y - transform.position.y, target.x - transform.position.x) * Mathf.Rad2Deg;
@@ -39,11 +38,10 @@ public class MeleeAttack : MonoBehaviour
 
             for (int i = 0; i < hits.Length; i++)
             {
+                Debug.Log("Layer: " + hits[i].collider.gameObject.layer);
                 if (hits[i].collider.gameObject.layer == 6)
                 {
-                    // TODO: separate colliders
-                    Debug.Log("hit: " + hits[i].collider.name);
-                    EnemyController enemy = hits[i].collider.gameObject.GetComponent<EnemyController>();
+                    EnemyController enemy = hits[i].collider.transform.parent.gameObject.GetComponent<EnemyController>();
                     enemy.Damage();
                     playerController.UIManager.Combo.IncreaseCombo();
                 }

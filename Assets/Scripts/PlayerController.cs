@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public UIManager UIManager
     {
         get => uiManager;
+        set => uiManager = value;
     }
 
 
@@ -63,6 +64,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         Health = health;
         IsAttacking = attacking;
         currentDashCD = dashCD;
+
+        UIManager = uiManager;
     }
 
     // Update is called once per frame
@@ -74,7 +77,10 @@ public class PlayerController : MonoBehaviour, IDamageable
             uiManager.DashSlider.value = dashCD - currentDashCD;
         }
 
-        NearestEnemy();
+        if (currentAttackCD <= 0.0f)
+        {
+            NearestEnemy();
+        }
 
         if (currentAttackCD > 0.0f)
         {
@@ -116,7 +122,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
                 if (hit.collider.gameObject.layer == 6)
                 {
-                    Destroy(hit.collider.gameObject);
+                    Destroy(hit.collider.transform.parent.gameObject);
                     uiManager.Combo.IncreaseCombo();
                 }
 
@@ -188,6 +194,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         float dist = detectionRange;
         enemies = Physics2D.CircleCastAll(transform.position, detectionRange, transform.up, 0f);
 
+        //Debug.Log("enemies: " + enemies.Length);
+
         for (int i = 0; i < enemies.Length; i++)
         {
             if (enemies[i].collider.gameObject.layer == 6)
@@ -195,7 +203,7 @@ public class PlayerController : MonoBehaviour, IDamageable
                 RaycastHit2D enemyCollision = enemies[i];
                 if (enemyCollision.distance < dist)
                 {
-                    dir = enemyCollision.collider.transform.position;
+                    dir = enemyCollision.collider.transform.parent.position;
                 }
             }
         }
@@ -210,6 +218,6 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Attack()
     {
-        meleeAttack.Attack(NearestEnemy());
+        meleeAttack.StartAttack(NearestEnemy());
     }
 }
