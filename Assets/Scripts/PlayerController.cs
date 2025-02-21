@@ -18,11 +18,12 @@ public class PlayerController : MonoBehaviour, IDamageable
     [Header("Variables")]
     [SerializeField] float speed;
     [SerializeField] float dashSpeed;
-    [SerializeField] float dashDistance;
+    [SerializeField] float baseDashDistance;
     [SerializeField] float dashTime;
     [SerializeField] float dashCD;
     [SerializeField] float detectionRange;
     [SerializeField] float attackCD;
+    [SerializeField] int baseAttackDamage;
     private float currentAttackCD = 0.0f;
     private float currentDashCD = 0.0f;
     private float currentDashDistance = 0.0f;
@@ -111,8 +112,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             StartCoroutine(Dashing());
         }
-        dashDistance = 10f;
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up, dashDistance, mask);
+        baseDashDistance = uiManager.Combo.comboMult;
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up, baseDashDistance, mask);
 
         for (int i = 0; i < hits.Length; i++)
         {
@@ -128,7 +129,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
                 else if (hit.collider.gameObject.layer == 3)
                 {
-                    dashDistance = hit.distance;
+                    baseDashDistance = hit.distance;
                 }
             }
         }
@@ -141,7 +142,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         currentDashDistance = 0.0f;
         currentDashCD = dashCD;
         
-        while (currentDashDistance < dashDistance)
+        while (currentDashDistance < baseDashDistance)
         {
             currentDashDistance += dashSpeed * Time.deltaTime;
             transform.parent.position += transform.up * dashSpeed * Time.deltaTime;
@@ -156,7 +157,15 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision");
+        Debug.Log("Collision: " + collision.transform.name);
+
+        //if (collision.gameObject.layer == 6)
+        //{
+        //    EnemyController enemy = collision.gameObject.transform.parent.GetComponent<EnemyController>();
+        //    if (enemy.Attack()) Damage();
+        //}
+
+
         /*if (dashing)
         {
             if (collision.gameObject.CompareTag("Entity"))
@@ -219,5 +228,10 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void Attack()
     {
         meleeAttack.StartAttack(NearestEnemy());
+    }
+
+    public int AttackDamage()
+    {
+        return baseAttackDamage * uiManager.Combo.comboMult;
     }
 }
