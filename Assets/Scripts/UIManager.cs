@@ -7,6 +7,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] Slider healthSlider;
     [SerializeField] Combo combo;
 
+    private void Start()
+    {
+        dashSlider.maxValue = 20;
+
+        // testing
+        dashSlider.value = 20;
+    }
+
     public Slider DashSlider
     {
         get => dashSlider;

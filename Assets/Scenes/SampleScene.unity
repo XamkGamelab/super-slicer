@@ -1162,12 +1162,12 @@ MonoBehaviour:
       m_Calls: []
   speed: 5
   dashSpeed: 150
-  dashDistance: 2
+  baseDashDistance: 2
   dashTime: 0.1
-  dashCD: 5
+  dashCD: 20
   detectionRange: 2.5
   attackCD: 1
-  attackDamage: 5
+  baseAttackDamage: 5
   dashing: 0
   rb: {fileID: 1847460772}
   uiManager: {fileID: 2009041274}

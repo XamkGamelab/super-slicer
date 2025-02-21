@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] float detectionRange;
     [SerializeField] float attackCD;
     [SerializeField] int baseAttackDamage;
+    private float dashMult;
     private float currentAttackCD = 0.0f;
     private float currentDashCD = 0.0f;
     private float currentDashDistance = 0.0f;
@@ -105,15 +106,17 @@ public class PlayerController : MonoBehaviour, IDamageable
     void Dash()
     {
         if (isDead) { return; }
-        Debug.Log("Dash");
 
+        Debug.Log("Dash " + currentDashCD);
         //transform.position = Vector2.Lerp()//+= transform.up * 2;
         if (!dashing && currentDashCD <= 0.0f)
         {
+            
             StartCoroutine(Dashing());
+            
         }
-        baseDashDistance = uiManager.Combo.comboMult;
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up, baseDashDistance, mask);
+        //baseDashDistance = uiManager.Combo.comboMult;
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up, dashMult, mask);
 
         for (int i = 0; i < hits.Length; i++)
         {
@@ -125,11 +128,12 @@ public class PlayerController : MonoBehaviour, IDamageable
                 {
                     Destroy(hit.collider.transform.parent.gameObject);
                     uiManager.Combo.IncreaseCombo();
+                    currentDashCD -= uiManager.Combo.comboMult;
                 }
 
                 else if (hit.collider.gameObject.layer == 3)
                 {
-                    baseDashDistance = hit.distance;
+                    dashMult = hit.distance;
                 }
             }
         }
@@ -141,8 +145,9 @@ public class PlayerController : MonoBehaviour, IDamageable
         //rb.simulated = false;
         currentDashDistance = 0.0f;
         currentDashCD = dashCD;
+        UpdateDashMult();
         
-        while (currentDashDistance < baseDashDistance)
+        while (currentDashDistance < dashMult)
         {
             currentDashDistance += dashSpeed * Time.deltaTime;
             transform.parent.position += transform.up * dashSpeed * Time.deltaTime;
@@ -233,5 +238,10 @@ public class PlayerController : MonoBehaviour, IDamageable
     public int AttackDamage()
     {
         return baseAttackDamage * uiManager.Combo.comboMult;
+    }
+
+    private void UpdateDashMult()
+    {
+        dashMult = baseDashDistance * uiManager.Combo.comboMult;
     }
 }
