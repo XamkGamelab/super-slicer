@@ -17,15 +17,6 @@ public class MeleeAttack : MonoBehaviour
 
     private RaycastHit2D[] hits;
 
-    private void Update()
-    {
-        //animator.SetBool(animHashAttacking, playerController.IsAttacking);
-        //gameObject.SetActive(playerController.IsAttacking);
-        //if (playerController.IsAttacking)
-        //{
-        //    Attack(playerController.NearestEnemy());
-        //}
-    }
 
     public void Attack(Vector2 dir)
     {
@@ -51,10 +42,10 @@ public class MeleeAttack : MonoBehaviour
                 if (hits[i].collider.gameObject.layer == 6)
                 {
                     // TODO: separate colliders
-                    Debug.Log("hit: " +hits[i].collider.name);
+                    Debug.Log("hit: " + hits[i].collider.name);
                     EnemyController enemy = hits[i].collider.gameObject.GetComponent<EnemyController>();
                     enemy.Damage();
-                    playerController.combo.IncreaseCombo();
+                    playerController.UIManager.Combo.IncreaseCombo();
                 }
             }
         }

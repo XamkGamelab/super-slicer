@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] PlayerController playerController;
     private GameManager gameManager;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         gameManager = GameManager.Instance;
@@ -17,7 +17,6 @@ public class InputManager : MonoBehaviour
         dashAction = InputSystem.actions.FindAction("Dash");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (dashAction.WasPressedThisFrame())

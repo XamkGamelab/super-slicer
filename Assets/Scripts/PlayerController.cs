@@ -30,10 +30,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] Rigidbody2D rb;
     LayerMask mask;
 
+    [SerializeField] UIManager uiManager;
     [SerializeField] MeleeAttack meleeAttack;
-    [SerializeField] Slider dashSlider;
-    [SerializeField] Slider HealthSlider;
-    public Combo combo;
+    
 
     private RaycastHit2D[] enemies;
 
@@ -44,7 +43,12 @@ public class PlayerController : MonoBehaviour, IDamageable
     bool isDead = false;
     public bool IsAttacking { get; set; }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public UIManager UIManager
+    {
+        get => uiManager;
+    }
+
+
     void Start()
     {
         gameManager = GameManager.Instance;
@@ -67,7 +71,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (currentDashCD > 0.0f) 
         {
             currentDashCD -= Time.deltaTime;
-            dashSlider.value = dashCD - currentDashCD;
+            uiManager.DashSlider.value = dashCD - currentDashCD;
         }
 
         NearestEnemy();
@@ -113,7 +117,7 @@ public class PlayerController : MonoBehaviour, IDamageable
                 if (hit.collider.gameObject.layer == 6)
                 {
                     Destroy(hit.collider.gameObject);
-                    combo.IncreaseCombo();
+                    uiManager.Combo.IncreaseCombo();
                 }
 
                 else if (hit.collider.gameObject.layer == 3)
@@ -162,7 +166,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (Health >= 0) 
         {
             Health--; 
-            HealthSlider.value = Health;
+            uiManager.HealthSlider.value = Health;
             if (Health <= 0)
             {
                 isDead = true;
@@ -194,7 +198,6 @@ public class PlayerController : MonoBehaviour, IDamageable
                     dir = enemyCollision.collider.transform.position;
                 }
             }
-
         }
 
         if (dir == Vector2.zero)

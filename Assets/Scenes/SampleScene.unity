@@ -1169,10 +1169,8 @@ MonoBehaviour:
   attackCD: 1
   dashing: 0
   rb: {fileID: 1847460772}
+  uiManager: {fileID: 2009041274}
   meleeAttack: {fileID: 1861334466}
-  dashSlider: {fileID: 1293840917}
-  HealthSlider: {fileID: 1783107838}
-  combo: {fileID: 274986852}
   health: 3
 --- !u!212 &661877384
 SpriteRenderer:
@@ -2365,6 +2363,7 @@ GameObject:
   - component: {fileID: 2009041272}
   - component: {fileID: 2009041271}
   - component: {fileID: 2009041270}
+  - component: {fileID: 2009041274}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2457,6 +2456,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2009041274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009041269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2625145ce606d3346a699a0f98283782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSlider: {fileID: 1293840917}
+  healthSlider: {fileID: 1783107838}
+  combo: {fileID: 274986852}
 --- !u!1 &2060917223
 GameObject:
   m_ObjectHideFlags: 0
