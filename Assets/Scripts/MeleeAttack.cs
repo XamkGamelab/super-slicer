@@ -9,7 +9,6 @@ public class MeleeAttack : MonoBehaviour
     [SerializeField] float attackRange = 0.5f;
     [SerializeField] SpriteRenderer swordRenderer;
     bool canAttack = true;
-    
 
     private readonly int animHashAttacking = Animator.StringToHash("AttackingRight");
     private readonly int animHashAttackDir = Animator.StringToHash("SwingDir");
@@ -34,7 +33,7 @@ public class MeleeAttack : MonoBehaviour
             }
 
             Debug.DrawRay(attackDir.position + attackDir.up * 2, attackDir.up * 0.5f, Color.white, 0.1f);
-            hits = Physics2D.CircleCastAll(attackDir.position + attackDir.up * 0.5f, attackRange, attackDir.up, 0f);
+            hits = Physics2D.CircleCastAll(attackDir.position + attackDir.up * 0.5f, attackRange, attackDir.up, 0f, playerController.mask);
 
             for (int i = 0; i < hits.Length; i++)
             {

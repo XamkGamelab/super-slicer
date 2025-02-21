@@ -99,4 +99,9 @@ public class EnemyController : MonoBehaviour, IDamageable
     {
         healthSlider.value = Health;
     }
+
+    private void OnDestroy()
+    {
+        // Instantiate combo on death pos?
+    }
 }

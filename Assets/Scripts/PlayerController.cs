@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private float currentDashDistance = 0.0f;
     public bool dashing;
     [SerializeField] Rigidbody2D rb;
-    LayerMask mask;
+    public LayerMask mask;
 
     [SerializeField] UIManager uiManager;
     [SerializeField] MeleeAttack meleeAttack;
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         mask = LayerMask.GetMask("Level", "Enemy");
         Health = health;
         IsAttacking = attacking;
-        currentDashCD = dashCD;
+        //currentDashCD = dashCD;
 
         UIManager = uiManager;
     }
@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             
         }
         //baseDashDistance = uiManager.Combo.comboMult;
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up, dashMult, mask);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, new Vector2(1f, 1f), 0, transform.up, dashMult, mask);//Physics2D.RaycastAll(transform.position, transform.up, dashMult, mask);
 
         for (int i = 0; i < hits.Length; i++)
         {
@@ -242,6 +242,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void UpdateDashMult()
     {
+        // Clamp dash length to reasonable distance
         dashMult = baseDashDistance * uiManager.Combo.comboMult;
     }
 }

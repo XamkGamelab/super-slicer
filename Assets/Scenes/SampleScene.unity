@@ -1162,7 +1162,7 @@ MonoBehaviour:
       m_Calls: []
   speed: 5
   dashSpeed: 150
-  baseDashDistance: 2
+  baseDashDistance: 1
   dashTime: 0.1
   dashCD: 20
   detectionRange: 2.5
@@ -1170,6 +1170,9 @@ MonoBehaviour:
   baseAttackDamage: 5
   dashing: 0
   rb: {fileID: 1847460772}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
   uiManager: {fileID: 2009041274}
   meleeAttack: {fileID: 1861334466}
   health: 3
