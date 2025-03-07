@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     private GameManager gameManager;
     [SerializeField] float speed;
     [SerializeField] GameObject player;
+    [SerializeField] int points;
     private Transform playerPos;
     [SerializeField] private float attackCD = 2f;
     private float currentAttackCD = 0f;
@@ -17,7 +18,10 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] Transform body;
     [SerializeField] int health = 3;
 
+    [SerializeField] UIManager uiManager;
+
     public int Health { get; set; }
+    public int PointValue { get; set; }
 
     void Start()
     {
@@ -29,6 +33,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         Health = health;
         healthSlider.maxValue = health;
         UpdateHealthBar();
+        PointValue = points;
     }
 
     // Update is called once per frame
@@ -90,6 +95,7 @@ public class EnemyController : MonoBehaviour, IDamageable
             UpdateHealthBar();
             if (Health <= 0)
             {
+                //uiManager.IncreaseScore(PointValue);
                 Destroy(gameObject);
             }
         }
