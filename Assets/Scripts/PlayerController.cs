@@ -18,17 +18,19 @@ public class PlayerController : MonoBehaviour, IDamageable
     [Header("Variables")]
     [SerializeField] float speed;
     [SerializeField] float dashSpeed;
-    [SerializeField] float dashDistance;
+    [SerializeField] float baseDashDistance;
     [SerializeField] float dashTime;
     [SerializeField] float dashCD;
     [SerializeField] float detectionRange;
     [SerializeField] float attackCD;
+    [SerializeField] int baseAttackDamage;
+    private float dashMult;
     private float currentAttackCD = 0.0f;
     private float currentDashCD = 0.0f;
     private float currentDashDistance = 0.0f;
     public bool dashing;
     [SerializeField] Rigidbody2D rb;
-    LayerMask mask;
+    public LayerMask mask;
 
     [SerializeField] UIManager uiManager;
     [SerializeField] MeleeAttack meleeAttack;
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public UIManager UIManager
     {
         get => uiManager;
+        set => uiManager = value;
     }
 
 
@@ -62,7 +65,9 @@ public class PlayerController : MonoBehaviour, IDamageable
         mask = LayerMask.GetMask("Level", "Enemy");
         Health = health;
         IsAttacking = attacking;
-        currentDashCD = dashCD;
+        //currentDashCD = dashCD;
+
+        UIManager = uiManager;
     }
 
     // Update is called once per frame
@@ -74,7 +79,10 @@ public class PlayerController : MonoBehaviour, IDamageable
             uiManager.DashSlider.value = dashCD - currentDashCD;
         }
 
-        NearestEnemy();
+        if (currentAttackCD <= 0.0f)
+        {
+            NearestEnemy();
+        }
 
         if (currentAttackCD > 0.0f)
         {
@@ -98,15 +106,17 @@ public class PlayerController : MonoBehaviour, IDamageable
     void Dash()
     {
         if (isDead) { return; }
-        Debug.Log("Dash");
 
+        Debug.Log("Dash " + currentDashCD);
         //transform.position = Vector2.Lerp()//+= transform.up * 2;
         if (!dashing && currentDashCD <= 0.0f)
         {
+            
             StartCoroutine(Dashing());
+            
         }
-        dashDistance = 10f;
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up, dashDistance, mask);
+        //baseDashDistance = uiManager.Combo.comboMult;
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, new Vector2(1f, 1f), 0, transform.up, dashMult, mask);//Physics2D.RaycastAll(transform.position, transform.up, dashMult, mask);
 
         for (int i = 0; i < hits.Length; i++)
         {
@@ -116,13 +126,14 @@ public class PlayerController : MonoBehaviour, IDamageable
 
                 if (hit.collider.gameObject.layer == 6)
                 {
-                    Destroy(hit.collider.gameObject);
+                    Destroy(hit.collider.transform.parent.gameObject);
                     uiManager.Combo.IncreaseCombo();
+                    currentDashCD -= uiManager.Combo.comboMult;
                 }
 
                 else if (hit.collider.gameObject.layer == 3)
                 {
-                    dashDistance = hit.distance;
+                    dashMult = hit.distance;
                 }
             }
         }
@@ -134,8 +145,9 @@ public class PlayerController : MonoBehaviour, IDamageable
         //rb.simulated = false;
         currentDashDistance = 0.0f;
         currentDashCD = dashCD;
+        UpdateDashMult();
         
-        while (currentDashDistance < dashDistance)
+        while (currentDashDistance < dashMult)
         {
             currentDashDistance += dashSpeed * Time.deltaTime;
             transform.parent.position += transform.up * dashSpeed * Time.deltaTime;
@@ -150,7 +162,15 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision");
+        Debug.Log("Collision: " + collision.transform.name);
+
+        //if (collision.gameObject.layer == 6)
+        //{
+        //    EnemyController enemy = collision.gameObject.transform.parent.GetComponent<EnemyController>();
+        //    if (enemy.Attack()) Damage();
+        //}
+
+
         /*if (dashing)
         {
             if (collision.gameObject.CompareTag("Entity"))
@@ -188,6 +208,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         float dist = detectionRange;
         enemies = Physics2D.CircleCastAll(transform.position, detectionRange, transform.up, 0f);
 
+        //Debug.Log("enemies: " + enemies.Length);
+
         for (int i = 0; i < enemies.Length; i++)
         {
             if (enemies[i].collider.gameObject.layer == 6)
@@ -195,7 +217,7 @@ public class PlayerController : MonoBehaviour, IDamageable
                 RaycastHit2D enemyCollision = enemies[i];
                 if (enemyCollision.distance < dist)
                 {
-                    dir = enemyCollision.collider.transform.position;
+                    dir = enemyCollision.collider.transform.parent.position;
                 }
             }
         }
@@ -210,6 +232,17 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Attack()
     {
-        meleeAttack.Attack(NearestEnemy());
+        meleeAttack.StartAttack(NearestEnemy());
+    }
+
+    public int AttackDamage()
+    {
+        return baseAttackDamage * uiManager.Combo.comboMult;
+    }
+
+    private void UpdateDashMult()
+    {
+        // Clamp dash length to reasonable distance
+        dashMult = baseDashDistance * uiManager.Combo.comboMult;
     }
 }
