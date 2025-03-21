@@ -41,12 +41,19 @@ public class GameManager : MonoBehaviour
     public void Pause(bool paused)
     {
         Time.timeScale = paused ? 0.0f : 1.0f;
+        controller.state = paused ? StateType.PAUSED : StateType.DEFAULT;
     }
 
     public void GameOver()
     {
         controller.state = StateType.GAMEOVER;
+        UIManager.EnableMenu(UIManager.Menus.GameOverMenu);
         //Pause(true);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void QuitGame()
+    {
+        controller.QuitGame();
     }
 }

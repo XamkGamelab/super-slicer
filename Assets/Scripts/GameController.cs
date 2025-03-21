@@ -16,14 +16,26 @@ public class GameController : MonoBehaviour
     {
         switch (state)
         {
-            case (GameManager.StateType.PAUSED):
-                Time.timeScale = 0;
+            case (GameManager.StateType.MENU):
+                Time.timeScale = 0.0f;
                 break;
-            case (GameManager.StateType.GAMEOVER):
+            case (GameManager.StateType.PAUSED):
+                gameManager.Pause(true);
+                break;
+            case (GameManager.StateType.GAMESTART):
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 break;
             default:
                 break;
         }
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
