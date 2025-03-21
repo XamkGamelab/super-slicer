@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] Slider dashSlider;
     [SerializeField] Slider healthSlider;
     [SerializeField] Combo combo;
+    [SerializeField] TextMeshProUGUI scoreTextField;
+    int score = 0;
 
     private void Start()
     {
@@ -31,5 +34,11 @@ public class UIManager : MonoBehaviour
     {
         get => combo;
         //set => combo = value;
+    }
+
+    public void IncreaseScore(int amount)
+    {
+        score += amount * combo.comboMult;
+        scoreTextField.text = $"Score: {score}";
     }
 }

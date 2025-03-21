@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] int health = 3;
 
     public int Health { get; set; }
+    public int PointValue { get; set; }
     bool isDead = false;
     public bool IsAttacking { get; set; }
 

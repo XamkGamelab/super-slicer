@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour, IDamageable
@@ -6,6 +7,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     private GameManager gameManager;
     [SerializeField] float speed;
     [SerializeField] GameObject player;
+    [SerializeField] int points;
     private Transform playerPos;
     [SerializeField] private float attackCD = 2f;
     private float currentAttackCD = 0f;
@@ -17,11 +19,28 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] Transform body;
     [SerializeField] int health = 3;
 
+    [SerializeField] UIManager uiManager;
+
+    //UnityEvent EnemyDeath;
+
     public int Health { get; set; }
+    public int PointValue { get; set; }
+
+    private void Awake()
+    {
+        
+    }
+
+    private void OnDestroy()
+    {
+        uiManager.IncreaseScore(PointValue);
+        //EnemyDeath.RemoveAllListeners();
+    }
 
     void Start()
     {
         gameManager = GameManager.Instance;
+        uiManager = gameManager.UIManager;
         player = gameManager.player;
         playerPos = player.transform;
         //mask = LayerMask.GetMask("Player");
@@ -29,6 +48,13 @@ public class EnemyController : MonoBehaviour, IDamageable
         Health = health;
         healthSlider.maxValue = health;
         UpdateHealthBar();
+        PointValue = points;
+
+        //if (EnemyDeath != null)
+        //{
+        //    EnemyDeath = new UnityEvent();
+        //}
+        //EnemyDeath.AddListener(OnEnemyDeath);
     }
 
     // Update is called once per frame
@@ -82,6 +108,12 @@ public class EnemyController : MonoBehaviour, IDamageable
         }
     }
 
+    private void OnEnemyDeath()
+    {
+        uiManager.IncreaseScore(PointValue);
+        Destroy(gameObject);
+    }
+
     public void Damage()
     {
         if (Health >= 0)
@@ -91,6 +123,7 @@ public class EnemyController : MonoBehaviour, IDamageable
             if (Health <= 0)
             {
                 Destroy(gameObject);
+                //OnEnemyDeath();
             }
         }
     }
@@ -98,10 +131,5 @@ public class EnemyController : MonoBehaviour, IDamageable
     private void UpdateHealthBar()
     {
         healthSlider.value = Health;
-    }
-
-    private void OnDestroy()
-    {
-        // Instantiate combo on death pos?
     }
 }

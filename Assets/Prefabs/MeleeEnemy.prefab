@@ -138,10 +138,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   player: {fileID: 0}
+  points: 0
   attackCD: 2
   healthSlider: {fileID: 4678349223111954063}
   body: {fileID: 0}
   health: 3
+  uiManager: {fileID: 0}
 --- !u!1 &3819996217357235531
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,10 +297,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   player: {fileID: 0}
+  points: 10
   attackCD: 2
   healthSlider: {fileID: 4678349223111954063}
   body: {fileID: 1285143843160918979}
   health: 100
+  uiManager: {fileID: 0}
 --- !u!1 &6920637332526968939
 GameObject:
   m_ObjectHideFlags: 0

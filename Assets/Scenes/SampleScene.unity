@@ -2148,6 +2148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 661877382}
+  UIManager: {fileID: 2009041274}
 --- !u!114 &1233680853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3092,6 +3093,7 @@ RectTransform:
   - {fileID: 1293840916}
   - {fileID: 1783107837}
   - {fileID: 274986849}
+  - {fileID: 132557567}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3114,6 +3116,7 @@ MonoBehaviour:
   dashSlider: {fileID: 1293840917}
   healthSlider: {fileID: 1783107838}
   combo: {fileID: 274986852}
+  scoreTextField: {fileID: 132557568}
 --- !u!1 &2060917223
 GameObject:
   m_ObjectHideFlags: 0
@@ -3304,17 +3307,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4349457381393354369, guid: 6ed930a7e0c44ca40bf98f378fd624e2, type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6373665777317976856, guid: 6ed930a7e0c44ca40bf98f378fd624e2, type: 3}
       propertyPath: m_Name
       value: MeleeEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8380696511761104931, guid: 6ed930a7e0c44ca40bf98f378fd624e2, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
