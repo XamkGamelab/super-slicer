@@ -1,16 +1,18 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameObject player;
     public UIManager UIManager;
+    public GameController controller;
 
     void Awake()
     {
         if (Instance == null) // If there is no instance already
         {
-            DontDestroyOnLoad(gameObject); // Keep the GameObject, this component is attached to, across different scenes
+            //DontDestroyOnLoad(gameObject); // Keep the GameObject, this component is attached to, across different scenes
             Instance = this;
         }
         else if (Instance != this) // If there is already an instance and it's not `this` instance
@@ -43,6 +45,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Pause(true);
+        controller.state = StateType.GAMEOVER;
+        //Pause(true);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

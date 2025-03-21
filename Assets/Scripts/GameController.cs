@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static GameManager;
 
 public class GameController : MonoBehaviour
 {
     private GameManager gameManager;
-    GameManager.StateType state;
+    public GameManager.StateType state;
 
     void Start()
     {
@@ -15,7 +16,11 @@ public class GameController : MonoBehaviour
     {
         switch (state)
         {
-            case (GameManager.StateType PAUSED):
+            case (GameManager.StateType.PAUSED):
+                Time.timeScale = 0;
+                break;
+            case (GameManager.StateType.GAMEOVER):
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 break;
             default:
                 break;
