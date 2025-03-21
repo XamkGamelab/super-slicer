@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour
 
     public void IncreaseScore(int amount)
     {
-        score += amount;
+        score += amount * combo.comboMult;
         scoreTextField.text = $"Score: {score}";
     }
 }

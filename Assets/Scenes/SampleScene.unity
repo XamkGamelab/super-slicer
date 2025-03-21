@@ -1734,6 +1734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 661877382}
+  UIManager: {fileID: 2009041274}
 --- !u!114 &1233680853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2803,10 +2804,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5269824492094055561, guid: 6ed930a7e0c44ca40bf98f378fd624e2, type: 3}
-      propertyPath: uiManager
-      value: 
-      objectReference: {fileID: 2009041274}
     - target: {fileID: 6373665777317976856, guid: 6ed930a7e0c44ca40bf98f378fd624e2, type: 3}
       propertyPath: m_Name
       value: MeleeEnemy

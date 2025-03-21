@@ -297,7 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   player: {fileID: 0}
-  points: 100
+  points: 10
   attackCD: 2
   healthSlider: {fileID: 4678349223111954063}
   body: {fileID: 1285143843160918979}

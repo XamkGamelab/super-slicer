@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour, IDamageable
@@ -20,12 +21,26 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     [SerializeField] UIManager uiManager;
 
+    //UnityEvent EnemyDeath;
+
     public int Health { get; set; }
     public int PointValue { get; set; }
+
+    private void Awake()
+    {
+        
+    }
+
+    private void OnDestroy()
+    {
+        uiManager.IncreaseScore(PointValue);
+        //EnemyDeath.RemoveAllListeners();
+    }
 
     void Start()
     {
         gameManager = GameManager.Instance;
+        uiManager = gameManager.UIManager;
         player = gameManager.player;
         playerPos = player.transform;
         //mask = LayerMask.GetMask("Player");
@@ -34,6 +49,12 @@ public class EnemyController : MonoBehaviour, IDamageable
         healthSlider.maxValue = health;
         UpdateHealthBar();
         PointValue = points;
+
+        //if (EnemyDeath != null)
+        //{
+        //    EnemyDeath = new UnityEvent();
+        //}
+        //EnemyDeath.AddListener(OnEnemyDeath);
     }
 
     // Update is called once per frame
@@ -87,6 +108,12 @@ public class EnemyController : MonoBehaviour, IDamageable
         }
     }
 
+    private void OnEnemyDeath()
+    {
+        uiManager.IncreaseScore(PointValue);
+        Destroy(gameObject);
+    }
+
     public void Damage()
     {
         if (Health >= 0)
@@ -95,8 +122,8 @@ public class EnemyController : MonoBehaviour, IDamageable
             UpdateHealthBar();
             if (Health <= 0)
             {
-                //uiManager.IncreaseScore(PointValue);
                 Destroy(gameObject);
+                //OnEnemyDeath();
             }
         }
     }
@@ -104,10 +131,5 @@ public class EnemyController : MonoBehaviour, IDamageable
     private void UpdateHealthBar()
     {
         healthSlider.value = Health;
-    }
-
-    private void OnDestroy()
-    {
-        // Instantiate combo on death pos?
     }
 }
