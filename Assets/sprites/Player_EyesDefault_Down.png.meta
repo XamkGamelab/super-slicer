@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: e12ad846f9bb60e458016c60f88125cc
+guid: 2de36d3d7ffc0864d87b9e0fcef3a725
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -556663896244417668
-    second: Group 3_0
+      213: -3418786821648426903
+    second: Player_EyesDefault_Down_0
+  - first:
+      213: -222084720365833005
+    second: Player_EyesDefault_Down_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +103,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Group 3_0
+      name: Player_EyesDefault_Down_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 308
-        height: 108
+        x: 717
+        y: 431
+        width: 446
+        height: 151
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c7b011db2255648f0800000000000000
-      internalID: -556663896244417668
+      spriteID: 968dbdccf770e80d0800000000000000
+      internalID: -3418786821648426903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_EyesDefault_Down_1
+      rect:
+        serializedVersion: 2
+        x: 982
+        y: 431
+        width: 181
+        height: 151
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d47d8c9f1ffaecf0800000000000000
+      internalID: -222084720365833005
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ecddadd3c871bfe419ebad22aac667c0
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Group 3_0: -556663896244417668
+      Player_EyesDefault_Down_0: -3418786821648426903
+      Player_EyesDefault_Down_1: -222084720365833005
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

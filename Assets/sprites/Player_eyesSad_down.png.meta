@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e12ad846f9bb60e458016c60f88125cc
+guid: 8a87d18015b78e944bb0dce98e1cd260
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -556663896244417668
-    second: Group 3_0
+      213: -5198285344388050250
+    second: Player_eyesSad_down_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Group 3_0
+      name: Player_eyesSad_down_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 308
-        height: 108
+        x: 703
+        y: 395
+        width: 476
+        height: 226
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c7b011db2255648f0800000000000000
-      internalID: -556663896244417668
+      spriteID: 6b291ae550bfbd7b0800000000000000
+      internalID: -5198285344388050250
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Group 3_0: -556663896244417668
+      Player_eyesSad_down_0: -5198285344388050250
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
