@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Player_eyesSad_down_0: -5198285344388050250
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
