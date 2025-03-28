@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 60afe04bb1e66774b8978485c1bdc072
+guid: 2509aff0e027d40479704f616312c0a2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1456130792725352307
-    second: ninja2_angle_down_0
+      213: -4345462867533152315
+    second: shuriken_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ninja2_angle_down_0
+      name: shuriken_0
       rect:
         serializedVersion: 2
-        x: 491
-        y: 209
-        width: 799
-        height: 814
+        x: 153
+        y: 84
+        width: 344
+        height: 348
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d80f81942c8cacbe0800000000000000
-      internalID: -1456130792725352307
+      spriteID: 5cf39049b80d1b3c0800000000000000
+      internalID: -4345462867533152315
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      ninja2_angle_down_0: -1456130792725352307
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

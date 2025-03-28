@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "jalat_oikealle_yl\xF6s_0": -7105499116318241097
+      "jalat_oikealle_yl\xF6s_1": -4794963153151067058
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

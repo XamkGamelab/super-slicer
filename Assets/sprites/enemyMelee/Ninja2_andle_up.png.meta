@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Ninja2_andle_up_0: 866760986604993637
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
