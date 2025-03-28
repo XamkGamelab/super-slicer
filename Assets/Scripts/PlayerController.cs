@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         Vector2 dir = new Vector2(transform.parent.position.x, transform.parent.position.y) + moveVector.normalized;
 
         transform.rotation = Quaternion.LookRotation(Vector3.forward, moveVector);
-        transform.parent.position = Vector2.Lerp(transform.parent.position, dir, speed * Time.deltaTime);
+        transform.parent.position = Vector2.Lerp(transform.parent.position, dir, speed * moveVector.magnitude * Time.deltaTime);
     }
 
     void Dash()
