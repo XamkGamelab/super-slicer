@@ -8,9 +8,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] Slider healthSlider;
     [SerializeField] Combo combo;
     [SerializeField] TextMeshProUGUI scoreTextField;
-    //[SerializeField] Button playButton;
-    //[SerializeField] Button settingsButton;
-    //[SerializeField] Button quitButton;
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject gameOverMenu;
@@ -47,19 +44,16 @@ public class UIManager : MonoBehaviour
     public Slider DashSlider
     {
         get => dashSlider;
-        //set => dashSlider = value;
     }
 
     public Slider HealthSlider 
     { 
         get => healthSlider;
-        //set => healthSlider = value; 
     }
 
     public Combo Combo
     {
         get => combo;
-        //set => combo = value;
     }
 
     public void IncreaseScore(int amount)
@@ -72,8 +66,6 @@ public class UIManager : MonoBehaviour
     {
         EnableMenu(Menus.HUD);
         gameManager.Pause(false);
-        // TODO: use previous timescale instead if paused at TS 0
-        //Time.timeScale = 1.0f;
     }
 
     public void QuitGame()

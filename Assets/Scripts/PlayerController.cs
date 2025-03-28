@@ -62,11 +62,9 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
         movementEvent.AddListener(Move);
         dashEvent.AddListener(Dash);
-        //rb = GetComponent<Rigidbody2D>();
         mask = LayerMask.GetMask("Level", "Enemy");
         Health = health;
         IsAttacking = attacking;
-        //currentDashCD = dashCD;
 
         UIManager = uiManager;
     }
@@ -74,16 +72,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
-//        if (Input.GetKeyDown(KeyCode.Escape))
-//        {
-//#if UNITY_EDITOR
-//            UnityEditor.EditorApplication.isPlaying = false;
-//#else
-//            Application.Quit();
-//#endif
-//        }
-
-
         if (currentDashCD > 0.0f) 
         {
             currentDashCD -= Time.deltaTime;
@@ -109,7 +97,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         if (isDead) { return; }
         Vector2 dir = new Vector2(transform.parent.position.x, transform.parent.position.y) + moveVector.normalized;
-        //Debug.Log($"Moving: {moveVector}");
+
         transform.rotation = Quaternion.LookRotation(Vector3.forward, moveVector);
         transform.parent.position = Vector2.Lerp(transform.parent.position, dir, speed * Time.deltaTime);
     }
@@ -119,15 +107,13 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (isDead) { return; }
 
         Debug.Log("Dash " + currentDashCD);
-        //transform.position = Vector2.Lerp()//+= transform.up * 2;
         if (!dashing && currentDashCD <= 0.0f)
         {
             
             StartCoroutine(Dashing());
             
         }
-        //baseDashDistance = uiManager.Combo.comboMult;
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, new Vector2(1f, 1f), 0, transform.up, dashMult, mask);//Physics2D.RaycastAll(transform.position, transform.up, dashMult, mask);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, new Vector2(1f, 1f), 0, transform.up, dashMult, mask);
 
         for (int i = 0; i < hits.Length; i++)
         {
@@ -153,7 +139,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     IEnumerator Dashing()
     {
         dashing = true;
-        //rb.simulated = false;
         currentDashDistance = 0.0f;
         currentDashCD = dashCD;
         UpdateDashMult();
@@ -168,7 +153,6 @@ public class PlayerController : MonoBehaviour, IDamageable
             yield return null;
         }
         dashing = false;
-        //rb.simulated = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -217,8 +201,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         Vector2 dir = Vector2.zero;
         float dist = detectionRange;
         enemies = Physics2D.CircleCastAll(transform.position, detectionRange, transform.up, 0f);
-
-        //Debug.Log("enemies: " + enemies.Length);
 
         for (int i = 0; i < enemies.Length; i++)
         {

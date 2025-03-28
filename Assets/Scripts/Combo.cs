@@ -27,7 +27,6 @@ public class Combo : MonoBehaviour
         // TODO: split in two functions
         int startMult = comboMult;
         yield return new WaitForSeconds(comboDecay);
-        //Debug.Log("attempt decay");
         if (startMult == comboMult)
         {
             Debug.Log("Decay");

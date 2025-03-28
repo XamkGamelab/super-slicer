@@ -13,15 +13,12 @@ public class EnemyController : MonoBehaviour, IDamageable
     private float currentAttackCD = 0f;
     private bool attackOnCD = false;
     PlayerController playerController;
-    //LayerMask mask;
 
     [SerializeField] Slider healthSlider;
     [SerializeField] Transform body;
     [SerializeField] int health = 3;
 
     [SerializeField] UIManager uiManager;
-
-    //UnityEvent EnemyDeath;
 
     public int Health { get; set; }
     public int PointValue { get; set; }
@@ -34,7 +31,6 @@ public class EnemyController : MonoBehaviour, IDamageable
     private void OnDestroy()
     {
         uiManager.IncreaseScore(PointValue);
-        //EnemyDeath.RemoveAllListeners();
     }
 
     void Start()
@@ -43,21 +39,13 @@ public class EnemyController : MonoBehaviour, IDamageable
         uiManager = gameManager.UIManager;
         player = gameManager.player;
         playerPos = player.transform;
-        //mask = LayerMask.GetMask("Player");
         playerController = player.GetComponent<PlayerController>();
         Health = health;
         healthSlider.maxValue = health;
         UpdateHealthBar();
         PointValue = points;
-
-        //if (EnemyDeath != null)
-        //{
-        //    EnemyDeath = new UnityEvent();
-        //}
-        //EnemyDeath.AddListener(OnEnemyDeath);
     }
 
-    // Update is called once per frame
     void Update()
     {
         body.rotation = Quaternion.LookRotation(Vector3.forward, playerPos.position - transform.position);
@@ -71,7 +59,6 @@ public class EnemyController : MonoBehaviour, IDamageable
                 attackOnCD = false;
             }
         }
-        //healthSlider.transform.rotation = Quaternion.Euler(0.0f, 0.0f, gameObject.transform.rotation.y * -1.0f);
     }
 
     public bool Attack()
@@ -88,7 +75,6 @@ public class EnemyController : MonoBehaviour, IDamageable
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("enemyattack " + attackOnCD);
-        //Attack();
 
         if (collision.gameObject.CompareTag("Player") && Attack())
         {
@@ -99,7 +85,6 @@ public class EnemyController : MonoBehaviour, IDamageable
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("enemyattack " + attackOnCD);
-        //Attack();
 
         if (collision.gameObject.CompareTag("Player") && Attack())
         {
@@ -123,7 +108,6 @@ public class EnemyController : MonoBehaviour, IDamageable
             if (Health <= 0)
             {
                 Destroy(gameObject);
-                //OnEnemyDeath();
             }
         }
     }

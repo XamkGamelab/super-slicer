@@ -48,8 +48,6 @@ public class GameManager : MonoBehaviour
     {
         controller.state = StateType.GAMEOVER;
         UIManager.EnableMenu(UIManager.Menus.GameOverMenu);
-        //Pause(true);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitGame()

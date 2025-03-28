@@ -3,7 +3,6 @@ using UnityEngine;
 public class MeleeAttack : MonoBehaviour
 {
     [SerializeField] Animator animator;
-    //[SerializeField] GameObject attack;
     [SerializeField] PlayerController playerController;
     [SerializeField] Transform attackDir;
     [SerializeField] float attackRange = 0.5f;
@@ -12,7 +11,6 @@ public class MeleeAttack : MonoBehaviour
 
     private readonly int animHashAttacking = Animator.StringToHash("AttackingRight");
     private readonly int animHashAttackDir = Animator.StringToHash("SwingDir");
-    //private readonly int animHashSwingDelay = Animator.StringToHash("SwingDelay");
 
     private RaycastHit2D[] hits;
 
@@ -51,7 +49,6 @@ public class MeleeAttack : MonoBehaviour
     private void PlayAnimation()
     {
         swordRenderer.gameObject.SetActive(true);
-        //AnimatorStateInfo animStateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
         Debug.Log(animator.GetBool(animHashAttacking));
 

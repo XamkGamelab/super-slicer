@@ -27,7 +27,6 @@ public class EnemySpawner : MonoBehaviour
         } else
         {
             timeFromLastSpawn = 0.0f;
-            //Camera.main.ViewportToWorldPoint(new Vector3(1.1f, 0.5f, 10.0f))
             SpawnEnemy();
         }
     }
