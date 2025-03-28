@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -96,6 +97,12 @@ public class UIManager : MonoBehaviour
     public void Settings()
     {
         // TODO: Settings
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
+        Play();
     }
 
     public void EnableMenu(Menus menu)
