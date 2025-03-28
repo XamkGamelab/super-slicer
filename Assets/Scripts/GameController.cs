@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static GameManager;
 
 public class GameController : MonoBehaviour
 {
     private GameManager gameManager;
-    GameManager.StateType state;
+    public GameManager.StateType state;
 
     void Start()
     {
@@ -15,10 +16,26 @@ public class GameController : MonoBehaviour
     {
         switch (state)
         {
-            case (GameManager.StateType PAUSED):
+            case (GameManager.StateType.MENU):
+                Time.timeScale = 0.0f;
+                break;
+            case (GameManager.StateType.PAUSED):
+                gameManager.Pause(true);
+                break;
+            case (GameManager.StateType.GAMESTART):
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 break;
             default:
                 break;
         }
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
