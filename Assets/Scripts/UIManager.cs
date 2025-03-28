@@ -82,18 +82,11 @@ public class UIManager : MonoBehaviour
 
     public void MainMenu()
     {
-        EnableMenu(Menus.MainMenu);
+        SceneManager.LoadScene(2);
+        //EnableMenu(Menus.MainMenu);
 
         // TODO: use previous timescale instead if paused at TS 0
         Time.timeScale = 1.0f;
-        if (SystemInfo.deviceType == DeviceType.Handheld)
-        {
-            SceneManager.LoadScene(1);
-        }
-        else
-        {
-            SceneManager.LoadScene(0);
-        }
     }
 
     public void Pause()
@@ -109,6 +102,7 @@ public class UIManager : MonoBehaviour
 
     public void Restart()
     {
+        gameManager.Pause(false);
         if (SystemInfo.deviceType == DeviceType.Handheld)
         {
             SceneManager.LoadScene(1);
@@ -117,7 +111,6 @@ public class UIManager : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
-        Play();
     }
 
     public void EnableMenu(Menus menu)

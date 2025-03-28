@@ -25,6 +25,9 @@ public class GameController : MonoBehaviour
             case (GameManager.StateType.GAMESTART):
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 break;
+            case (GameManager.StateType.GAMEOVER):
+                Time.timeScale = 0.0f;
+                break;
             default:
                 break;
         }

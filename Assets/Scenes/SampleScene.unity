@@ -444,7 +444,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &33520803
 RectTransform:
   m_ObjectHideFlags: 0
@@ -523,7 +523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &45162888
 RectTransform:
   m_ObjectHideFlags: 0
@@ -919,7 +919,7 @@ RectTransform:
   m_Father: {fileID: 1009144471}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3386,6 +3386,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 661877383}
+  joystick: {fileID: 0}
+  joystickBackground: {fileID: 0}
 --- !u!4 &1233680851
 Transform:
   m_ObjectHideFlags: 0
@@ -3415,6 +3417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 661877382}
   UIManager: {fileID: 2009041274}
+  MenuManager: {fileID: 0}
   controller: {fileID: 1233680854}
 --- !u!114 &1233680853
 MonoBehaviour:
@@ -3450,7 +3453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19dc5e23406eec7449bd90c16ebaf372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 4
+  state: 0
 --- !u!1 &1249367923
 GameObject:
   m_ObjectHideFlags: 0
@@ -4180,7 +4183,7 @@ RectTransform:
   m_Father: {fileID: 720588631}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
