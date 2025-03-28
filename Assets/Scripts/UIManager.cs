@@ -86,6 +86,14 @@ public class UIManager : MonoBehaviour
 
         // TODO: use previous timescale instead if paused at TS 0
         Time.timeScale = 1.0f;
+        if (SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            SceneManager.LoadScene(1);
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     public void Pause()
@@ -101,7 +109,14 @@ public class UIManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(0);
+        if (SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            SceneManager.LoadScene(1);
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+        }
         Play();
     }
 
