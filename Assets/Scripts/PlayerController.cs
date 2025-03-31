@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] Rigidbody2D rb;
     public LayerMask mask;
 
+    [SerializeField] Transform _moveDir;
+
     [SerializeField] UIManager uiManager;
     [SerializeField] MeleeAttack meleeAttack;
     
@@ -98,7 +100,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (isDead) { return; }
         Vector2 dir = new Vector2(transform.parent.position.x, transform.parent.position.y) + moveVector.normalized;
 
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, moveVector);
+        _moveDir.rotation = Quaternion.LookRotation(Vector3.forward, moveVector);
         transform.parent.position = Vector2.Lerp(transform.parent.position, dir, speed * moveVector.magnitude * Time.deltaTime);
     }
 
@@ -113,7 +115,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             StartCoroutine(Dashing());
             
         }
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, new Vector2(1f, 1f), 0, transform.up, dashMult, mask);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, new Vector2(1f, 1f), 0, _moveDir.up, dashMult, mask);
 
         for (int i = 0; i < hits.Length; i++)
         {
@@ -146,7 +148,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         while (currentDashDistance < dashMult)
         {
             currentDashDistance += dashSpeed * Time.deltaTime;
-            transform.parent.position += transform.up * dashSpeed * Time.deltaTime;
+            transform.parent.position += _moveDir.up * dashSpeed * Time.deltaTime;
 
             // add check if colliding with edges or enemies
 
