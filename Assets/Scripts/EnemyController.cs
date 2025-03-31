@@ -19,8 +19,6 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] Transform moveDir;
     [SerializeField] int health = 3;
 
-    [SerializeField] UIManager uiManager;
-
     public int Health { get; set; }
     public int PointValue { get; set; }
 
@@ -31,13 +29,12 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void OnDestroy()
     {
-        uiManager.IncreaseScore(PointValue);
+        gameManager.IncreaseScore(PointValue);
     }
 
     void Start()
     {
         gameManager = GameManager.Instance;
-        uiManager = gameManager.UIManager;
         player = gameManager.player;
         playerPos = player.transform;
         playerController = player.GetComponent<PlayerController>();
@@ -96,7 +93,7 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void OnEnemyDeath()
     {
-        uiManager.IncreaseScore(PointValue);
+        //uiManager.IncreaseScore(PointValue);
         Destroy(gameObject);
     }
 
