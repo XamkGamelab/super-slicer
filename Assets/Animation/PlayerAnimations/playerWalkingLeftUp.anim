@@ -219,7 +219,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Player_EyesDefault_Down_0
+    path: PlayerEyes
     classID: 1
     script: {fileID: 0}
     flags: 16
@@ -286,7 +286,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 600204999
+      path: 2017444001
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -712,7 +712,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Player_EyesDefault_Down_0
+    path: PlayerEyes
     classID: 1
     script: {fileID: 0}
     flags: 16

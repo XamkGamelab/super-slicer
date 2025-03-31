@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 11826734}
   - component: {fileID: 11826733}
   m_Layer: 0
-  m_Name: player_body_down_0
+  m_Name: PlayerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,7 +324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &16636409
 Transform:
   m_ObjectHideFlags: 0
@@ -944,7 +944,7 @@ GameObject:
   - component: {fileID: 174363771}
   - component: {fileID: 174363772}
   m_Layer: 0
-  m_Name: Player_EyesDefault_Down_0
+  m_Name: PlayerEyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1397,6 +1397,8 @@ MonoBehaviour:
   comboTextField: {fileID: 274986850}
   comboDecay: 3
   comboMult: 1
+  StartingColor: {r: 1, g: 1, b: 1, a: 1}
+  FullColor: {r: 1, g: 0.19276568, b: 0, a: 1}
 --- !u!1 &348837504
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,7 +2122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &599659290
 Transform:
   m_ObjectHideFlags: 0
@@ -3257,7 +3259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &957716718
 Transform:
   m_ObjectHideFlags: 0
@@ -3375,7 +3377,7 @@ GameObject:
   - component: {fileID: 1107871293}
   - component: {fileID: 1107871294}
   m_Layer: 0
-  m_Name: Player_LeftFoot_down_0
+  m_Name: PlayerLeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4938,7 +4940,7 @@ GameObject:
   - component: {fileID: 1770745203}
   - component: {fileID: 1770745204}
   m_Layer: 0
-  m_Name: Player_RightFoot_Down_0
+  m_Name: PlayerRightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -9,6 +9,9 @@ public class Combo : MonoBehaviour
     public int comboMult = 1;
     float currentComboDecay;
 
+    [SerializeField] Color StartingColor;
+    [SerializeField] Color FullColor;
+
     private void Update()
     {
         if (currentComboDecay > 0)
@@ -45,6 +48,14 @@ public class Combo : MonoBehaviour
 
     private void UpdateComboMeter()
     {
+        comboTextField.color = ComboColor();
+        Debug.Log(ComboColor());
+        Debug.Log(comboMult / 30.0f);
         comboTextField.text = $"X{comboMult}";
+    }
+
+    private Color ComboColor()
+    {
+        return Color.Lerp(StartingColor, FullColor, comboMult / 30.0f);
     }
 }
