@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     [SerializeField] Slider healthSlider;
     [SerializeField] Transform body;
+    [SerializeField] Transform moveDir;
     [SerializeField] int health = 3;
 
     [SerializeField] UIManager uiManager;
@@ -48,8 +49,8 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     void Update()
     {
-        body.rotation = Quaternion.LookRotation(Vector3.forward, playerPos.position - transform.position);
-        transform.position += body.up * speed * Time.deltaTime;
+        moveDir.rotation = Quaternion.LookRotation(Vector3.forward, playerPos.position - transform.position);
+        transform.position += moveDir.up * speed * Time.deltaTime;
 
         if (attackOnCD) 
         { 

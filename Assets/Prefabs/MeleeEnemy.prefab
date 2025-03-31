@@ -46,7 +46,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1285143843160918979}
   - component: {fileID: 3356666820002022541}
-  - component: {fileID: 511780776859110356}
   m_Layer: 6
   m_Name: Body
   m_TagString: Entity
@@ -64,9 +63,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.16, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 2596903610446160561}
   m_Father: {fileID: 3964863782690496374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3356666820002022541
@@ -113,8 +113,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.5471698, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 8288045433929225700, guid: 7cb5c63ded551a44da62a29d40ca4f32, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -124,26 +124,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &511780776859110356
-MonoBehaviour:
+--- !u!1 &2666518525774726753
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 896853271150260263}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0010db52cb05034bbaa59f4e267c1c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  player: {fileID: 0}
-  points: 0
-  attackCD: 2
-  healthSlider: {fileID: 4678349223111954063}
-  body: {fileID: 0}
-  health: 3
-  uiManager: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2596903610446160561}
+  m_Layer: 6
+  m_Name: MoveDirection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2596903610446160561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2666518525774726753}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1285143843160918979}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3819996217357235531
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,6 +312,7 @@ MonoBehaviour:
   attackCD: 2
   healthSlider: {fileID: 4678349223111954063}
   body: {fileID: 1285143843160918979}
+  moveDir: {fileID: 2596903610446160561}
   health: 100
   uiManager: {fileID: 0}
 --- !u!1 &6920637332526968939

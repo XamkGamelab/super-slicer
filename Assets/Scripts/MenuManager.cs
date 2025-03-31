@@ -31,14 +31,7 @@ public class MenuManager : MonoBehaviour
     public void Play()
     {
         gameManager.Pause(false);
-        if (SystemInfo.deviceType == DeviceType.Handheld)
-        {
-            SceneManager.LoadScene(1);
-        }
-        else
-        {
-            SceneManager.LoadScene(0);
-        }
+        SceneManager.LoadScene(0);
     }
 
     public void QuitGame()
@@ -51,7 +44,7 @@ public class MenuManager : MonoBehaviour
 
         // TODO: use previous timescale instead if paused at TS 0
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 
     public void Settings()

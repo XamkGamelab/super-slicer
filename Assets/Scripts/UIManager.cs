@@ -82,7 +82,7 @@ public class UIManager : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
         //EnableMenu(Menus.MainMenu);
 
         // TODO: use previous timescale instead if paused at TS 0
@@ -103,14 +103,7 @@ public class UIManager : MonoBehaviour
     public void Restart()
     {
         gameManager.Pause(false);
-        if (SystemInfo.deviceType == DeviceType.Handheld)
-        {
-            SceneManager.LoadScene(1);
-        }
-        else
-        {
-            SceneManager.LoadScene(0);
-        }
+        SceneManager.LoadScene(0);
     }
 
     public void EnableMenu(Menus menu)
