@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     [SerializeField] UIManager uiManager;
     [SerializeField] MeleeAttack meleeAttack;
+
+    [SerializeField] public Animator animator;
     
 
     private RaycastHit2D[] enemies;
@@ -98,6 +100,11 @@ public class PlayerController : MonoBehaviour, IDamageable
     void Move(Vector2 moveVector)
     {
         if (isDead) { return; }
+        animator.SetBool("IsMoving", true);
+
+        animator.SetFloat("DirX", moveVector.x);
+        animator.SetFloat("DirY", moveVector.y);
+
         Vector2 dir = new Vector2(transform.parent.position.x, transform.parent.position.y) + moveVector.normalized;
 
         _moveDir.rotation = Quaternion.LookRotation(Vector3.forward, moveVector);

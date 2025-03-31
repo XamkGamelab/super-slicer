@@ -27,16 +27,18 @@ public class InputManager : MonoBehaviour
             playerController.dashEvent.Invoke();
         }
 
-        if (movementAction.IsPressed() && !playerController.dashing)
+        else if (movementAction.IsPressed() && !playerController.dashing)
         {
             Vector2 movementValue = movementAction.ReadValue<Vector2>();
             playerController.movementEvent.Invoke(movementValue);
         }
 
-        if (joystick.Direction != Vector2.zero)
+        else if (joystick.Direction != Vector2.zero)
         {
             playerController.movementEvent.Invoke(new Vector2(joystick.Horizontal, joystick.Vertical));
         }
+
+        else playerController.animator.SetBool("IsMoving", false);
 
         //Debug.Log(joystickBackground.localPosition);
         joystickBackground.localPosition = new Vector2(Mathf.Clamp(joystickBackground.position.x, 0, 1000), joystickBackground.position.y);

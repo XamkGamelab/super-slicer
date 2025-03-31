@@ -241,7 +241,7 @@ Animator:
   m_GameObject: {fileID: 11826731}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4b43c8a06e7ae6e4aab316543f5d0fb3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9a1fe4746572b324eab68192e8e35a9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2555,6 +2555,7 @@ MonoBehaviour:
   _moveDir: {fileID: 858666694}
   uiManager: {fileID: 2009041274}
   meleeAttack: {fileID: 1861334466}
+  animator: {fileID: 11826733}
   health: 3
 --- !u!212 &661877384
 SpriteRenderer:
