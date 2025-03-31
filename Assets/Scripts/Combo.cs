@@ -32,7 +32,6 @@ public class Combo : MonoBehaviour
         yield return new WaitForSeconds(comboDecay);
         if (startMult == comboMult)
         {
-            Debug.Log("Decay");
             comboMult = 1;
             UpdateComboMeter();
         }
@@ -41,7 +40,6 @@ public class Combo : MonoBehaviour
 
     public void IncreaseCombo()
     {
-        Debug.Log("Combo wombo");
         comboMult += 1;
         UpdateComboMeter();
     }
@@ -49,8 +47,6 @@ public class Combo : MonoBehaviour
     private void UpdateComboMeter()
     {
         comboTextField.color = ComboColor();
-        Debug.Log(ComboColor());
-        Debug.Log(comboMult / 30.0f);
         comboTextField.text = $"X{comboMult}";
     }
 

@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject mainMenu;
 
     private GameManager gameManager;
-    int score = 0;
+    //int score = 0;
 
     public enum Menus
     {
