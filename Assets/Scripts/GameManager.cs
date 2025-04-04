@@ -55,4 +55,9 @@ public class GameManager : MonoBehaviour
     {
         controller.QuitGame();
     }
+
+    public void IncreaseScore(int amount)
+    {
+        UIManager.IncreaseScore(amount);
+    }
 }

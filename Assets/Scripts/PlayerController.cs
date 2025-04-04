@@ -164,24 +164,14 @@ public class PlayerController : MonoBehaviour, IDamageable
         dashing = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collision: " + collision.transform.name);
+        Debug.Log("Collision: " + collision.name);
 
-        //if (collision.gameObject.layer == 6)
-        //{
-        //    EnemyController enemy = collision.gameObject.transform.parent.GetComponent<EnemyController>();
-        //    if (enemy.Attack()) Damage();
-        //}
-
-
-        /*if (dashing)
+        if (collision.gameObject.layer == 9)
         {
-            if (collision.gameObject.CompareTag("Entity"))
-            {
-                Destroy(collision.gameObject);
-            }
-        }*/
+            Damage();
+        }
     }
 
     public void Damage()

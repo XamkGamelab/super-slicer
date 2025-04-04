@@ -113,7 +113,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8288045433929225700, guid: 7cb5c63ded551a44da62a29d40ca4f32, type: 3}
+  m_Sprite: {fileID: 6334696390627552415, guid: 20802a191377687489555bcab6cf2dc1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -240,9 +240,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3964863782690496374}
   - component: {fileID: 4673541462285603050}
-  - component: {fileID: 5269824492094055561}
+  - component: {fileID: 343984408110866383}
   m_Layer: 6
-  m_Name: MeleeEnemy
+  m_Name: RangedEnemy
   m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,7 +294,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &5269824492094055561
+--- !u!114 &343984408110866383
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,17 +303,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 6373665777317976856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0010db52cb05034bbaa59f4e267c1c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 225e3f7b8e928644a98a26318d44b114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 2
   player: {fileID: 0}
   points: 10
   attackCD: 2
+  attackOnCD: 0
   healthSlider: {fileID: 4678349223111954063}
   body: {fileID: 1285143843160918979}
   moveDir: {fileID: 2596903610446160561}
-  health: 100
+  health: 60
+  range: 10
+  inRange: 0
+  shurikenPrefab: {fileID: 2095619573722167583, guid: 93d8d7591bfa4784d9f0758709433472, type: 3}
 --- !u!1 &6920637332526968939
 GameObject:
   m_ObjectHideFlags: 0
