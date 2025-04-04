@@ -35,11 +35,20 @@ public class MeleeAttack : MonoBehaviour
 
             for (int i = 0; i < hits.Length; i++)
             {
-                Debug.Log("Layer: " + hits[i].collider.gameObject.layer);
                 if (hits[i].collider.gameObject.layer == 6)
                 {
-                    EnemyController enemy = hits[i].collider.transform.parent.gameObject.GetComponent<EnemyController>();
-                    enemy.Damage();
+                    if (hits[i].collider.transform.parent.gameObject.GetComponent<EnemyController>() != null)
+                    {
+                        EnemyController enemy = hits[i].collider.transform.parent.gameObject.GetComponent<EnemyController>();
+                        Debug.Log("Enemy hit!");
+                        enemy.Damage();
+                    } else if (hits[i].collider.transform.parent.gameObject.GetComponent<RangedEnemy>() != null)
+                    {
+                        RangedEnemy enemy = hits[i].collider.transform.parent.gameObject.GetComponent<RangedEnemy>();
+                        Debug.Log("Enemy hit!");
+                        enemy.Damage();
+                    } 
+                    
                     playerController.UIManager.Combo.IncreaseCombo();
                 }
             }

@@ -1,8 +1,7 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class EnemyController : MonoBehaviour, IDamageable
+public class RangedEnemy : MonoBehaviour, IDamageable
 {
     private GameManager gameManager;
     [SerializeField] float speed;
@@ -11,13 +10,17 @@ public class EnemyController : MonoBehaviour, IDamageable
     private Transform playerPos;
     [SerializeField] private float attackCD = 2f;
     private float currentAttackCD = 0f;
-    private bool attackOnCD = false;
+    public bool attackOnCD = false;
     PlayerController playerController;
 
     [SerializeField] Slider healthSlider;
     [SerializeField] Transform body;
     [SerializeField] Transform moveDir;
     [SerializeField] int health = 3;
+    [SerializeField] float range;
+    public bool inRange = false;
+
+    [SerializeField] Shuriken shurikenPrefab;
 
     public int Health { get; set; }
     public int PointValue { get; set; }
@@ -41,11 +44,18 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     void Update()
     {
-        moveDir.rotation = Quaternion.LookRotation(Vector3.forward, playerPos.position - transform.position);
-        transform.position += moveDir.up * speed * Time.deltaTime;
+        if (Vector3.Distance(transform.position, playerPos.position) < range) inRange = true;
+        else inRange = false;
 
-        if (attackOnCD) 
-        { 
+        moveDir.rotation = Quaternion.LookRotation(Vector3.forward, playerPos.position - transform.position);
+
+        if (!inRange)
+        {
+            transform.position += moveDir.up * speed * Time.deltaTime;
+        } else Attack();
+
+        if (attackOnCD)
+        {
             currentAttackCD -= Time.deltaTime;
             if (currentAttackCD < 0)
             {
@@ -56,34 +66,16 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     public bool Attack()
     {
-        if (!attackOnCD)
+        if (!attackOnCD && inRange)
         {
+            Shuriken temp = Instantiate(shurikenPrefab, transform.position, Quaternion.identity);
+            temp.direction = playerPos.position - transform.position;
+            temp.direction.Normalize();
             currentAttackCD = attackCD;
             attackOnCD = true;
             return true;
         }
         return false;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("enemyattack " + attackOnCD);
-
-        if (collision.gameObject.CompareTag("Player") && Attack())
-        {
-            playerController.Damage();
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("enemyattack " + attackOnCD);
-
-        if (collision.gameObject.CompareTag("Player") && Attack())
-        {
-
-            playerController.Damage();
-        }
     }
 
     private void OnEnemyDeath()
@@ -97,7 +89,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         if (Health >= 0)
         {
             Health -= playerController.AttackDamage();
-            
+
             UpdateHealthBar();
             if (Health <= 0)
             {

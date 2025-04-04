@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] BoxCollider2D spawnArea;
     [SerializeField] float spawnDelay;
     [SerializeField] float timeFromLastSpawn = 0.0f;
+    [SerializeField] int weights;
 
     [SerializeField] Transform[] spawnPoints;
 
@@ -36,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
         int zoneIndex = Random.Range(0, 4);
         Transform spawnZone = spawnPoints[zoneIndex];
         Debug.Log($"Index: {zoneIndex}");
-        Instantiate(meleeEnemy, RandomPointInBox(spawnZone.position, spawnZone.localScale), Quaternion.identity);
+        Instantiate(RandomEnemy(), RandomPointInBox(spawnZone.position, spawnZone.localScale), Quaternion.identity);
     }
 
     private static Vector3 RandomPointInBox(Vector3 center, Vector3 size)
@@ -47,5 +48,15 @@ public class EnemySpawner : MonoBehaviour
            (Random.value - 0.5f) * size.y,
            (Random.value - 0.5f) * size.z
         );
+    }
+
+    private GameObject RandomEnemy()
+    {
+        int randomNumber = Random.Range(0, 10);
+        if (randomNumber < weights)
+        {
+            return meleeEnemy;
+        }
+        else return RangedEnemy;
     }
 }
