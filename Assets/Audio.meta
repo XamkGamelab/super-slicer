@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 guid: b636b2f5b0d8ab74a8a4fc2030a4737d
 =======
 guid: 997fe00ea84a5e34898219686cf3a33b
 >>>>>>> Stashed changes
+=======
+guid: bd1e0597d9dad6c4290e7a2645252d49
+>>>>>>> DashTrail
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

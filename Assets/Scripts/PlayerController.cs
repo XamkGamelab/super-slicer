@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public UnityEvent dashEvent;
 
     [Header("Variables")]
+    [SerializeField] float baseSpeed;
     [SerializeField] float speed;
     [SerializeField] float dashSpeed;
     [SerializeField] float baseDashDistance;
@@ -38,6 +39,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] MeleeAttack meleeAttack;
 
     [SerializeField] public Animator animator;
+
+    [SerializeField] TrailRenderer trailRenderer;
     
 
     private RaycastHit2D[] enemies;
@@ -95,6 +98,8 @@ public class PlayerController : MonoBehaviour, IDamageable
             Attack();
             currentAttackCD = attackCD;
         }
+
+        UpdateSpeed();
     }
 
     void Move(Vector2 moveVector)
@@ -147,6 +152,9 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     IEnumerator Dashing()
     {
+        trailRenderer.startColor = uiManager.Combo.ComboColor();
+        trailRenderer.endColor = uiManager.Combo.ComboColor();
+        trailRenderer.emitting = true;
         dashing = true;
         currentDashDistance = 0.0f;
         currentDashCD = dashCD;
@@ -161,6 +169,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
             yield return null;
         }
+        trailRenderer.emitting = false;
         dashing = false;
     }
 
@@ -235,5 +244,10 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         // Clamp dash length to reasonable distance
         dashMult = baseDashDistance * uiManager.Combo.comboMult;
+    }
+
+    public void UpdateSpeed()
+    {
+        speed = baseSpeed + Mathf.Pow(uiManager.Combo.comboMult, .3f);
     }
 }

@@ -125,9 +125,8 @@ MonoBehaviour:
   direction: {x: 1, y: 0, z: 0}
   speed: 10
   rotationSpeed: 800
-  lifetime: 10
+  lifetime: 5
   sprite: {fileID: 3345875266142867185}
-  player: {fileID: 0}
 --- !u!50 &8067323596870687737
 Rigidbody2D:
   serializedVersion: 5
