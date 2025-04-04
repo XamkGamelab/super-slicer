@@ -50,7 +50,7 @@ public class Combo : MonoBehaviour
         comboTextField.text = $"X{comboMult}";
     }
 
-    private Color ComboColor()
+    public Color ComboColor()
     {
         return Color.Lerp(StartingColor, FullColor, comboMult / 30.0f);
     }

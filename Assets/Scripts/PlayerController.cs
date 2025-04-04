@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] MeleeAttack meleeAttack;
 
     [SerializeField] public Animator animator;
+
+    [SerializeField] TrailRenderer trailRenderer;
     
 
     private RaycastHit2D[] enemies;
@@ -147,6 +149,9 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     IEnumerator Dashing()
     {
+        trailRenderer.startColor = uiManager.Combo.ComboColor();
+        trailRenderer.endColor = uiManager.Combo.ComboColor();
+        trailRenderer.emitting = true;
         dashing = true;
         currentDashDistance = 0.0f;
         currentDashCD = dashCD;
@@ -161,6 +166,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
             yield return null;
         }
+        trailRenderer.emitting = false;
         dashing = false;
     }
 
