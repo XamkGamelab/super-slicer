@@ -2541,6 +2541,7 @@ MonoBehaviour:
   dashEvent:
     m_PersistentCalls:
       m_Calls: []
+  baseSpeed: 4
   speed: 5
   dashSpeed: 150
   baseDashDistance: 1

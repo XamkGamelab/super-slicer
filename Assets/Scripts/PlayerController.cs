@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public UnityEvent dashEvent;
 
     [Header("Variables")]
+    [SerializeField] float baseSpeed;
     [SerializeField] float speed;
     [SerializeField] float dashSpeed;
     [SerializeField] float baseDashDistance;
@@ -97,6 +98,8 @@ public class PlayerController : MonoBehaviour, IDamageable
             Attack();
             currentAttackCD = attackCD;
         }
+
+        UpdateSpeed();
     }
 
     void Move(Vector2 moveVector)
@@ -241,5 +244,10 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         // Clamp dash length to reasonable distance
         dashMult = baseDashDistance * uiManager.Combo.comboMult;
+    }
+
+    public void UpdateSpeed()
+    {
+        speed = baseSpeed + Mathf.Pow(uiManager.Combo.comboMult, .3f);
     }
 }
