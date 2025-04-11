@@ -34,10 +34,10 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        int zoneIndex = Random.Range(0, 4);
+        int zoneIndex = Random.Range(0, spawnPoints.Length);
         Transform spawnZone = spawnPoints[zoneIndex];
         Debug.Log($"Index: {zoneIndex}");
-        Instantiate(RandomEnemy(), RandomPointInBox(spawnZone.position, spawnZone.localScale), Quaternion.identity);
+        Instantiate(RandomEnemy(),spawnZone.position, Quaternion.identity);
     }
 
     private static Vector3 RandomPointInBox(Vector3 center, Vector3 size)
