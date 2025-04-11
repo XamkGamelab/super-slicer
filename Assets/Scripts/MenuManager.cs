@@ -31,7 +31,7 @@ public class MenuManager : MonoBehaviour
     public void Play()
     {
         gameManager.Pause(false);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
@@ -44,7 +44,7 @@ public class MenuManager : MonoBehaviour
 
         // TODO: use previous timescale instead if paused at TS 0
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     public void Settings()
