@@ -1,12 +1,12 @@
 # ninja log v5
-53	155	7660628934239379	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	578fd1a68843b934
-157	266	7660628935346998	C:/Users/valtteri.italinna/Documents/GitRepos/super-slicer/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/625d5w4z/obj/arm64-v8a/libswappywrapper.so	27af17b9172e4e1c
-1	522	7660628937876850	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	b6b1330493a18a6d
-15	529	7660628937927048	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	f5d56d722a2ba504
-32	535	7660628938033228	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	4053efacacf1a7fa
-39	551	7660628938163456	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	4a4746fa5cbfddf
-27	554	7660628938198627	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	bbe00a67b0d1790c
-46	589	7660628938575407	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	9aa542cf45a28d10
-20	612	7660628938766345	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	3f3b1d9dc21af84e
-10	646	7660628939038796	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	683ac7e0577dd4a1
-646	731	7660628939995687	C:/Users/valtteri.italinna/Documents/GitRepos/super-slicer/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/625d5w4z/obj/arm64-v8a/libgame.so	87dd41c090755c57
+33	109	7660706054279512	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	578fd1a68843b934
+110	201	7660706055187640	C:/Users/valtteri.italinna/Documents/GitRepos/super-slicer/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/625d5w4z/obj/arm64-v8a/libswappywrapper.so	27af17b9172e4e1c
+4	404	7660706057148953	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	b6b1330493a18a6d
+15	435	7660706057471603	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	f5d56d722a2ba504
+24	435	7660706057516862	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	4a4746fa5cbfddf
+19	444	7660706057603471	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	9aa542cf45a28d10
+28	450	7660706057664578	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	4053efacacf1a7fa
+11	454	7660706057725043	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	bbe00a67b0d1790c
+0	482	7660706057995814	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	683ac7e0577dd4a1
+8	502	7660706058188189	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	3f3b1d9dc21af84e
+502	583	7660706059012559	C:/Users/valtteri.italinna/Documents/GitRepos/super-slicer/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/625d5w4z/obj/arm64-v8a/libgame.so	87dd41c090755c57
