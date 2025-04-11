@@ -82,7 +82,7 @@ public class UIManager : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
         //EnableMenu(Menus.MainMenu);
 
         // TODO: use previous timescale instead if paused at TS 0
@@ -103,7 +103,7 @@ public class UIManager : MonoBehaviour
     public void Restart()
     {
         gameManager.Pause(false);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void EnableMenu(Menus menu)
