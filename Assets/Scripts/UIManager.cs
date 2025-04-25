@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Slider healthSlider;
     [SerializeField] Combo combo;
     [SerializeField] TextMeshProUGUI scoreTextField;
+    [SerializeField] TextMeshProUGUI gameOverScoreTextField;
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject gameOverMenu;
@@ -61,6 +62,7 @@ public class UIManager : MonoBehaviour
     {
         score += amount * combo.comboMult;
         scoreTextField.text = $"Score: {score}";
+        gameOverScoreTextField.text = scoreTextField.text;
     }
 
     public void Play()
