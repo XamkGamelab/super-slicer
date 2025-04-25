@@ -47,7 +47,7 @@ public class Combo : MonoBehaviour
     private void UpdateComboMeter()
     {
         comboTextField.color = ComboColor();
-        comboTextField.text = $"X{comboMult}";
+        comboTextField.text = $"Combo: X{comboMult}";
     }
 
     public Color ComboColor()

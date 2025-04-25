@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float spawnDelay;
     [SerializeField] float timeFromLastSpawn = 0.0f;
     [SerializeField] int weights;
+    int enemiesSpawned = 0;
 
     [SerializeField] Transform[] spawnPoints;
 
@@ -38,6 +39,12 @@ public class EnemySpawner : MonoBehaviour
         Transform spawnZone = spawnPoints[zoneIndex];
         Debug.Log($"Index: {zoneIndex}");
         Instantiate(RandomEnemy(),spawnZone.position, Quaternion.identity);
+        enemiesSpawned++;
+        
+        if (spawnDelay > 0.5f)
+        {
+            spawnDelay -= enemiesSpawned * 0.01f;
+        }
     }
 
     private static Vector3 RandomPointInBox(Vector3 center, Vector3 size)
