@@ -2680,7 +2680,7 @@ MonoBehaviour:
   meleeAttack: {fileID: 1861334466}
   animator: {fileID: 11826733}
   trailRenderer: {fileID: 1038574768}
-  health: 3
+  health: 5
 --- !u!212 &661877384
 SpriteRenderer:
   m_ObjectHideFlags: 0
