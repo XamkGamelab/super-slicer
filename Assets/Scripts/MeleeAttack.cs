@@ -17,7 +17,6 @@ public class MeleeAttack : MonoBehaviour
 
     public void StartAttack(Vector2 dir)
     {
-        Debug.Log("Attack! " + canAttack);
         if (canAttack)
         {
             if (dir != Vector2.zero)
@@ -30,7 +29,7 @@ public class MeleeAttack : MonoBehaviour
                 attackDir.rotation = targetRotation;
             }
 
-            Debug.DrawRay(attackDir.position + attackDir.up * 2, attackDir.up * 0.5f, Color.white, 0.1f);
+            //Debug.DrawRay(attackDir.position + attackDir.up * 2, attackDir.up * 0.5f, Color.white, 0.1f);
             hits = Physics2D.CircleCastAll(attackDir.position + attackDir.up * 0.5f, attackRange, attackDir.up, 0f, playerController.mask);
 
             for (int i = 0; i < hits.Length; i++)
@@ -59,7 +58,7 @@ public class MeleeAttack : MonoBehaviour
     {
         swordRenderer.gameObject.SetActive(true);
 
-        Debug.Log(animator.GetBool(animHashAttacking));
+        //Debug.Log(animator.GetBool(animHashAttacking));
 
         if (!animator.GetBool(animHashAttacking))
         {
